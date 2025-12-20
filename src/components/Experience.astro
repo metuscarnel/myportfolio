@@ -1,0 +1,201 @@
+---
+interface ExperienceItem {
+  role: string;
+  organization: string;
+  location: string;
+  period: string;
+  description: string;
+}
+
+interface Props {
+  experiences?: ExperienceItem[];
+}
+
+const {
+  experiences = [
+    {
+      role: "Employé Commercial",
+      organization: "Carrefour",
+      location: "Paris, France",
+      period: "Depuis Juin 2025",
+      description: ""
+    },
+    {
+      role: "Volontaire en Service Civique",
+      organization: "Hôpital Fondation Adolphe de Rothschild",
+      location: "Paris, France",
+      period: "Juin - Septembre 2025",
+      description:
+        "Accompagnement d'étudiants de première année en algorithmique et programmation. Animation de séances de travaux dirigés et correction d'exercices.",
+    },
+    {
+      role: "Tuteur Académique",
+      organization: "ZupdeCo",
+      location: "En distanciel",
+      period: "Février - Juin 2025",
+      description:
+        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
+    },
+    {
+      role: "Stagiaire",
+      organization: "Ministère de l'Agriculture de l'Élevage et de la Pêche (MAEP) Bénin",
+      location: "Cotonou, Bénin",
+      period: "Mai - Août 2024",
+      description:
+        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
+    },
+       {
+      role: "Stagiaire",
+      organization: "Blolab Bénin",
+      location: "Cotonou, Bénin",
+      period: "Juillet - Août 2023",
+      description:
+        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
+    },
+       {
+      role: "Stagiaire",
+      organization: "ROMAS Technologie",
+      location: "Cotonou, Bénin",
+      period: "Septembre - Octobre 2022",
+      description:
+        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
+    },
+    
+  ],
+} = Astro.props;
+---
+
+<section id="experience" class="experience section-animate" aria-labelledby="experience-heading">
+  <div class="experience-container">
+    <h2 id="experience-heading" class="section-title">Expérience</h2>
+    <div class="experience-list">
+      {
+        experiences.map((exp) => (
+          <article class="experience-item">
+            <div class="experience-meta">
+              <span class="experience-period">{exp.period}</span>
+            </div>
+            <div class="experience-content">
+              <h3 class="experience-role">{exp.role}</h3>
+              <div class="experience-org-location">
+                <span class="experience-org">{exp.organization}</span>
+                <span class="experience-separator" aria-hidden="true">·</span>
+                <span class="experience-location">{exp.location}</span>
+              </div>
+              {exp.description && <p class="experience-desc">{exp.description}</p>}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    background-color: var(--color-white);
+  }
+
+  .experience-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .experience-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-gray-lighter);
+  }
+
+  .experience-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .experience-meta {
+    /* Grid column 1 */
+  }
+
+  .experience-period {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-gray);
+    white-space: nowrap;
+  }
+
+  .experience-content {
+    /* Grid column 2 */
+  }
+
+  .experience-role {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
+  }
+
+  .experience-org-location {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .experience-org {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-dark);
+  }
+
+  .experience-separator {
+    color: var(--color-gray-light);
+  }
+
+  .experience-location {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray);
+  }
+
+  .experience-desc {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-dark);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .experience {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .experience-item {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xs);
+    }
+
+    .experience-period {
+      font-size: var(--font-size-xs);
+    }
+  }
+</style>

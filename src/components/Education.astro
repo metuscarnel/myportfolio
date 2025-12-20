@@ -1,0 +1,135 @@
+---
+interface EducationItem {
+  degree: string;
+  institution: string;
+  period: string;
+  details?: string;
+}
+
+interface Props {
+  education?: EducationItem[];
+}
+
+const {
+  education = [
+    {
+      degree: "Licence Informatique",
+      institution: "Université Évry Paris-Saclay",
+      period: "En cours",
+      details: "Spécialisation en Conception et Intelligence des Logiciels et Systèmes (CILS)",
+    },
+    {
+      degree: "Licence Informatique",
+      institution: "Université d'Abomey-Calavi",
+      period: "2021 — 2024",
+      details: "Mention Bien — Administration des Réseaux Informatique",
+    },
+  ],
+} = Astro.props;
+---
+
+<section id="education" class="education section-animate" aria-labelledby="education-heading">
+  <div class="education-container">
+    <h2 id="education-heading" class="section-title">Formation</h2>
+    <div class="education-list">
+      {
+        education.map((edu) => (
+          <article class="education-item">
+            <div class="education-meta">
+              <span class="education-period">{edu.period}</span>
+            </div>
+            <div class="education-content">
+              <h3 class="education-degree">{edu.degree}</h3>
+              <p class="education-institution">{edu.institution}</p>
+              {edu.details && <p class="education-details">{edu.details}</p>}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .education {
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    background-color: var(--color-pure-white);
+  }
+
+  .education-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .education-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-gray-lighter);
+  }
+
+  .education-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .education-period {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-gray);
+    white-space: nowrap;
+  }
+
+  .education-degree {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
+  }
+
+  .education-institution {
+    font-size: var(--font-size-base);
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .education-details {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-dark);
+  }
+
+  @media (max-width: 768px) {
+    .education {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .education-item {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xs);
+    }
+
+    .education-period {
+      font-size: var(--font-size-xs);
+    }
+  }
+</style>

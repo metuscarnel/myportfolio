@@ -1,0 +1,135 @@
+---
+interface Props {
+  email?: string;
+  github?: string;
+  linkedin?: string;
+}
+
+const {
+  email = "contact@metuscarnel.fr",
+  github = "https://github.com/metus01",
+  linkedin = "https://linkedin.com/in/alexandremartin",
+} = Astro.props;
+
+const githubUsername = github.split("/").pop();
+const linkedinUsername = linkedin.split("/").pop();
+---
+
+<section id="contact" class="contact section-animate" aria-labelledby="contact-heading">
+  <div class="contact-container">
+    <h2 id="contact-heading" class="section-title">Contact</h2>
+    <p class="contact-intro">
+      Disponible pour des opportunités de stage, d'alternance ou de collaboration sur des projets
+      innovants.
+    </p>
+    <address class="contact-links">
+      <a href={`mailto:${email}`} class="contact-link link-hover">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">{email}</span>
+      </a>
+      <a
+        href={github}
+        class="contact-link link-hover"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">@{githubUsername}</span>
+      </a>
+      <a
+        href={linkedin}
+        class="contact-link link-hover"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">/in/{linkedinUsername}</span>
+      </a>
+    </address>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .contact-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gray-light);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-intro {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-lighter);
+    margin-bottom: var(--spacing-xl);
+    max-width: 32rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    font-style: normal;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-lg);
+    color: var(--color-white);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-link:hover,
+  .contact-link:focus {
+    color: var(--color-gray-lighter);
+  }
+
+  .contact-label {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-gray);
+    min-width: 80px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .contact-value {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .contact {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .contact-intro {
+      font-size: var(--font-size-base);
+    }
+
+    .contact-link {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .contact-label {
+      font-size: var(--font-size-xs);
+    }
+  }
+</style>

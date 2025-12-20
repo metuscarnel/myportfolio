@@ -1,0 +1,56 @@
+---
+interface Props {
+  content?: string;
+}
+
+const {
+  content = "Étudiant en dernière année de Master en Informatique à l'Université de Paris. Spécialisé en développement web et en systèmes distribués, je combine rigueur académique et expérience pratique pour créer des applications performantes et maintenables. Curieux et autodidacte, je m'investis continuellement dans l'apprentissage de nouvelles technologies.",
+} = Astro.props;
+---
+
+<section id="about" class="about section-animate" aria-labelledby="about-heading">
+  <div class="about-container">
+    <h2 id="about-heading" class="section-title">À propos</h2>
+    <p class="about-content">{content}</p>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    background-color: var(--color-pure-white);
+  }
+
+  .about-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-gray-lighter);
+  }
+
+  .about-content {
+    font-size: var(--font-size-lg);
+    line-height: 1.85;
+    color: var(--color-dark);
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .about-content {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

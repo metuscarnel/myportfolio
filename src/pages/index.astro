@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import Education from "../components/Education.astro";
+import Certifications from "../components/Certifications.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<BaseLayout title="Métus Gbogbohoundada — Portfolio">
+  <Hero />
+  <main>
+    <About />
+    <Skills />
+    <Projects />
+    <Experience />
+    <Education />
+    <Certifications />
+    <Contact />
+  </main>
+  <footer class="footer">
+    <p class="footer-text">© 2025 Métus Gbogbohoundada. Tous droits réservés.</p>
+  </footer>
+</BaseLayout>
+
+<style>
+  .footer {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    background-color: var(--color-black);
+    border-top: 1px solid var(--color-gray-dark);
+  }
+
+  .footer-text {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    font-size: var(--font-size-xs);
+    color: var(--color-gray);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: var(--spacing-md) var(--spacing-lg);
+    }
+  }
+</style>

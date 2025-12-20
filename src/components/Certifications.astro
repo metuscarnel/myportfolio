@@ -1,0 +1,121 @@
+---
+interface Certification {
+  name: string;
+  issuer: string;
+  year: string;
+}
+
+interface Props {
+  certifications?: Certification[];
+}
+
+const {
+  certifications = [
+    {
+      name: "Brevet d'Initiation Aéronautique (BIA)",
+      issuer: "Ministère de l'Education Nationale",
+      year: "2025",
+    },
+  ],
+} = Astro.props;
+---
+
+<section
+  id="certifications"
+  class="certifications section-animate"
+  aria-labelledby="certifications-heading"
+>
+  <div class="certifications-container">
+    <h2 id="certifications-heading" class="section-title">Certifications</h2>
+    <ul class="certifications-list" role="list">
+      {
+        certifications.map((cert) => (
+          <li class="certification-item">
+            <span class="certification-year">{cert.year}</span>
+            <div class="certification-content">
+              <span class="certification-name">{cert.name}</span>
+              <span class="certification-issuer">{cert.issuer}</span>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .certifications {
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    background-color: var(--color-white);
+  }
+
+  .certifications-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .certifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .certification-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--spacing-lg);
+    align-items: baseline;
+  }
+
+  .certification-year {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-gray);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .certification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .certification-name {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.4;
+  }
+
+  .certification-issuer {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray);
+  }
+
+  @media (max-width: 768px) {
+    .certifications {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .certification-item {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xs);
+    }
+
+    .certification-year {
+      font-size: var(--font-size-xs);
+    }
+  }
+</style>

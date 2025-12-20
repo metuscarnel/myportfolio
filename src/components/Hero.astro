@@ -1,0 +1,111 @@
+---
+interface Props {
+  name?: string;
+  title?: string;
+  tagline?: string;
+}
+
+const {
+  name = "Métus Gbogbohoundada",
+  title = "Étudiant en Informatique",
+  tagline = "Passionné par le développement logiciel et l'innovation technologique. Je conçois des solutions élégantes pour des problèmes complexes.",
+} = Astro.props;
+---
+
+<header class="hero">
+  <div class="hero-content">
+    <h1 class="hero-name">{name}</h1>
+    <p class="hero-title">{title}</p>
+    <p class="hero-tagline">{tagline}</p>
+    <nav class="hero-nav" aria-label="Navigation rapide">
+      <a href="#projects" class="hero-link link-hover">Projets</a>
+      <span class="hero-separator" aria-hidden="true">/</span>
+      <a href="#contact" class="hero-link link-hover">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    background-color: var(--color-white);
+  }
+
+  .hero-content {
+    max-width: var(--content-width);
+    text-align: center;
+  }
+
+  .hero-name {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-5xl);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+  }
+
+  .hero-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-tagline {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-dark);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-xl);
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+
+  .hero-link {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-dark);
+    padding: var(--spacing-xs) 0;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-separator {
+    color: var(--color-gray-light);
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: var(--spacing-lg);
+    }
+
+    .hero-name {
+      font-size: var(--font-size-4xl);
+    }
+
+    .hero-title {
+      font-size: var(--font-size-base);
+    }
+
+    .hero-tagline {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>
