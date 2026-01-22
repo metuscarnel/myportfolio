@@ -8,7 +8,7 @@ interface Props {
 const {
   email = "contact@metuscarnel.fr",
   github = "https://github.com/metus01",
-  linkedin = "https://linkedin.com/in/alexandremartin",
+  linkedin = "https://www.linkedin.com/in/m%C3%A9tus-gbogbohoundada-b718a8257/",
 } = Astro.props;
 
 const githubUsername = github.split("/").pop();
@@ -19,8 +19,7 @@ const linkedinUsername = linkedin.split("/").pop();
   <div class="contact-container">
     <h2 id="contact-heading" class="section-title">Contact</h2>
     <p class="contact-intro">
-      Disponible pour des opportunités de stage, d'alternance ou de collaboration sur des projets
-      innovants.
+      Disponible pour des opportunités de stage, d'alternance ou de collaboration sur des projets intéressants.
     </p>
     <address class="contact-links">
       <a href={`mailto:${email}`} class="contact-link link-hover">

@@ -16,9 +16,9 @@ const {
     {
       role: "Employé Commercial",
       organization: "Carrefour",
-      location: "Paris, France",
+      location: "Évry-Courcouronnes, France",
       period: "Depuis Juin 2025",
-      description: ""
+      description: "Employé Commercial en CDI au sein du magasin Carrefour Evry2, j'assure le reassort des rayons, la gestion des stocks, et le service client pour garantir une expérience d'achat optimale.",
     },
     {
       role: "Volontaire en Service Civique",
@@ -26,31 +26,28 @@ const {
       location: "Paris, France",
       period: "Juin - Septembre 2025",
       description:
-        "Accompagnement d'étudiants de première année en algorithmique et programmation. Animation de séances de travaux dirigés et correction d'exercices.",
+        "Missions : Accueillir, orienter et accompagner les patients dans les différents services · Participer à l'accueil de l'hôpital et des centres de santé · Fournir des informations générales sur les services et le fonctionnement de l'hôpital Aide administrative · Aider les patients à utiliser les bornes de consultation digitale · Expliquer ou lire certains documents administratifs aux patients",
     },
     {
       role: "Tuteur Académique",
       organization: "ZupdeCo",
       location: "En distanciel",
       period: "Février - Juin 2025",
-      description:
-        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
+      description:"Accompagnement personnalisé d'un élève en difficulté. Soutien académique en Français Anglais et Mathématiques · Aide à l'organisation et à la gestion du temps · Encouragement et motivation pour renforcer la confiance en soi et l'estime de soi · Suivi régulier des progrès académiques et ajustement des stratégies d'apprentissage en conséquence.",
     },
     {
-      role: "Stagiaire",
+      role: "Administrateur Système (Stagiaire)",
       organization: "Ministère de l'Agriculture de l'Élevage et de la Pêche (MAEP) Bénin",
       location: "Cotonou, Bénin",
       period: "Mai - Août 2024",
-      description:
-        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
-    },
+      description:"Ajout d'un modèle de chiffrement au système d'archivage Maarch RM pour renforcement de la sécurité des données.",    },
        {
-      role: "Stagiaire",
+      role: "Développeur (Stagiaire)",
       organization: "Blolab Bénin",
       location: "Cotonou, Bénin",
       period: "Juillet - Août 2023",
       description:
-        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
+        "Conception et développement d'une application  web de partage de recette culinaire utilisant le framework  Laravel. Collaboration avec une équipe avec une condisciple.",
     },
        {
       role: "Stagiaire",
@@ -58,7 +55,7 @@ const {
       location: "Cotonou, Bénin",
       period: "Septembre - Octobre 2022",
       description:
-        "Contribution à un projet de recherche sur les systèmes distribués. Implémentation de prototypes et rédaction de documentation technique.",
+        "Stage de découverte en entreprise axé sur le développement web et la gestion des bases de données. Participation à des projets réels et acquisition de compétences pratiques.",
     },
     
   ],
@@ -70,7 +67,7 @@ const {
     <h2 id="experience-heading" class="section-title">Expérience</h2>
     <div class="experience-list">
       {
-        experiences.map((exp) => (
+        experiences.map((exp: ExperienceItem) => (
           <article class="experience-item">
             <div class="experience-meta">
               <span class="experience-period">{exp.period}</span>
