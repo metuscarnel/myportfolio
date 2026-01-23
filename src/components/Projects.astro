@@ -12,27 +12,28 @@ interface Props {
 
 const {
   projects = [
+     {
+      title: "Connect 4 Game 8 x 9",
+      description:
+        "Développement d'un jeu de Puissance 4 en Python avec une grille personnalisée de 8x9. Implémentation de l'algorithme Minimax pour une IA compétitive.",
+      technologies: ["Python", "JSON" ,"Git/GitHub", "PostreSQL",],
+      link: "https://github.com",
+    },
     {
       title: "Plateforme de gestion hotelière",
       description:
-        "Application web full-stack permettant la création, l'organisation et le suivi de tâches en équipe. Implémentation de fonctionnalités temps réel avec WebSocket.",
-      technologies: ["React", "Node.js", "PostgreSQL", "Socket.io"],
+        "Développement d'une application web complète pour la gestion hôtelière, incluant la réservation de chambres, la gestion des clients et la facturation.",
+      technologies: ["Java", "Swing", "FlatLaf", "SQLite"],
       link: "https://github.com",
     },
     {
-      title: "Conception du  ",
+      title: "Conception du système de gestion d'un réseaux de transport",
       description:
-        "Système de recommandation basé sur le filtrage collaboratif pour une application de streaming musical. Projet académique de Machine Learning.",
-      technologies: ["Python", "Scikit-learn", "Pandas", "NumPy"],
+        "Analyse Fonctionnelle et Conception du nouveau Système de la Société TRICE. Projet académique de Modélisation Objet UML.",
+      technologies: ["Latex", "UML","Git/GitHub", "Figma"],
       link: "https://github.com",
     },
-    {
-      title: "Connect 4 Game 8 x 9",
-      description:
-        "Conception et développement d'une API RESTful complète pour une plateforme e-commerce, avec authentification JWT et documentation OpenAPI.",
-      technologies: ["Python", "JSON" ,"Git/GitHub"],
-      link: "https://github.com",
-    },
+   
   ],
 } = Astro.props;
 ---
