@@ -14,7 +14,10 @@ const {
 
 <header class="hero">
   <div class="hero-content">
-    <h1 class="hero-name">{name}</h1>
+    <h1 class="hero-name" data-text={name}>
+      <span class="typewriter-text"></span>
+      <span class="typewriter-underline"></span>
+    </h1>
     <p class="hero-title">{title}</p>
     <p class="hero-tagline">{tagline}</p>
     <nav class="hero-nav" aria-label="Navigation rapide">
@@ -48,6 +51,25 @@ const {
     color: var(--color-black);
     margin-bottom: var(--spacing-sm);
     line-height: 1.2;
+    position: relative;
+    display: inline-block;
+  }
+
+  .typewriter-text {
+    display: inline-block;
+  }
+
+  .typewriter-underline {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 3px;
+    background: var(--color-dark, #1a1a1a);
+    transition: opacity 0.5s ease-out;
+  }
+
+  .typewriter-underline.fade-out {
+    opacity: 0;
   }
 
   .hero-title {
@@ -109,3 +131,46 @@ const {
     }
   }
 </style>
+
+<script>
+  const typewriterEffect = () => {
+    const nameElement = document.querySelector('.hero-name') as HTMLElement;
+    if (!nameElement) return;
+
+    const textElement = nameElement.querySelector('.typewriter-text') as HTMLElement;
+    const underlineElement = nameElement.querySelector('.typewriter-underline') as HTMLElement;
+    
+    const fullText = nameElement.getAttribute('data-text') || '';
+    const typingSpeed = 1000 / fullText.length; // 1 seconde pour tout le texte
+    
+    let currentIndex = 0;
+    
+    const typeNextChar = () => {
+      if (currentIndex < fullText.length) {
+        textElement.textContent += fullText[currentIndex];
+        
+        // Mettre à jour la largeur de la barre de soulignement
+        const textWidth = textElement.offsetWidth;
+        underlineElement.style.width = `${textWidth}px`;
+        
+        currentIndex++;
+        setTimeout(typeNextChar, typingSpeed);
+      } else {
+        // Animation terminée, faire disparaître la barre
+        setTimeout(() => {
+          underlineElement.classList.add('fade-out');
+        }, 300);
+      }
+    };
+    
+    // Démarrer l'animation
+    typeNextChar();
+  };
+
+  // Démarrer l'animation au chargement
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', typewriterEffect);
+  } else {
+    typewriterEffect();
+  }
+</script>

@@ -201,13 +201,76 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     opacity: 0;
     transform: translateY(30px);
     transition:
-      opacity 0.7s ease-out,
-      transform 0.7s ease-out;
+      opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
   }
 
   .section-animate.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Variant: Slide from left */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition:
+      opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+  }
+
+  .reveal-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Variant: Slide from right */
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition:
+      opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+  }
+
+  .reveal-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Variant: Scale up */
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition:
+      opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+  }
+
+  .reveal-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Staggered animation delays for child elements */
+  .section-animate[data-delay="1"] {
+    transition-delay: 0.1s;
+  }
+
+  .section-animate[data-delay="2"] {
+    transition-delay: 0.2s;
+  }
+
+  .section-animate[data-delay="3"] {
+    transition-delay: 0.3s;
+  }
+
+  .section-animate[data-delay="4"] {
+    transition-delay: 0.4s;
   }
 
   /* Subtle link underline animation */
@@ -246,22 +309,42 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
 </style>
 
 <script>
-  // Intersection Observer for fade-in animations
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px 0px -50px 0px",
-    threshold: 0.1,
+  // Intersection Observer pour animations de révélation au scroll
+  const createScrollObserver = () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-50px 0px -50px 0px",
+      threshold: 0.15,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          
+          // Performance: arrêter d'observer après animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observer tous les éléments avec classes d'animation
+    const animatedElements = document.querySelectorAll(
+      ".section-animate, .reveal-left, .reveal-right, .reveal-scale"
+    );
+    
+    animatedElements.forEach((element) => {
+      observer.observe(element);
+    });
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-      }
-    });
-  }, observerOptions);
+  // Initialiser au chargement et lors de navigations côté client
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", createScrollObserver);
+  } else {
+    createScrollObserver();
+  }
 
-  document.querySelectorAll(".section-animate").forEach((section) => {
-    observer.observe(section);
-  });
+  // Support pour les navigations Astro (View Transitions)
+  document.addEventListener("astro:page-load", createScrollObserver);
 </script>

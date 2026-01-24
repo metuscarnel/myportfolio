@@ -2,16 +2,14 @@
 interface Props {
   content?: string;
 }
-
-const {
-  content = "Je suis animé par la conviction que l'analyse de données est un levier puissant pour répondre aux grands défis sociétaux et environnementaux de demain. Actuellement en pleine montée en compétences sur l'écosystème Data, je combine ma formation académique avec une veille technologique constante. Mais je ne suis pas qu'un profil technique : je crois fermement à l'importance de l'ouverture d'esprit. Mon profil s'enrichit d'un fort intérêt pour la culture générale, indispensable pour donner du sens aux chiffres, et d'un goût prononcé pour le sport qui canalise mon énergie. De nature curieuse, je suis également un linguophile amateur, appréciant la découverte de nouvelles cultures et la logique des mots, une gymnastique intellectuelle qui sert mon esprit d'analyse au quotidien.",
-} = Astro.props;
 ---
 
 <section id="about" class="about section-animate" aria-labelledby="about-heading">
   <div class="about-container">
     <h2 id="about-heading" class="section-title">À propos</h2>
-    <p class="about-content">{content}</p>
+    <p class="about-content">
+      Je suis animé par la conviction que l'analyse de données est un levier puissant pour répondre aux grands <span class="highlight">défis sociétaux</span> et <span class="highlight">environnementaux</span> de demain. Actuellement en pleine montée en compétences sur l'écosystème Data, je combine ma formation académique avec une veille technologique constante. Mais je ne suis pas qu'un profil technique : je crois fermement à l'importance de l'ouverture d'esprit. Mon profil s'enrichit d'un fort intérêt pour la <span class="highlight">culture générale</span>, indispensable pour donner du sens aux chiffres, et d'un goût prononcé pour le <span class="highlight">sport</span> qui canalise mon énergie. De nature curieuse, je suis également un linguophile amateur, appréciant la découverte de nouvelles cultures et la logique des mots, une gymnastique intellectuelle qui sert mon esprit d'analyse au quotidien.
+    </p>
   </div>
 </section>
 
@@ -42,6 +40,21 @@ const {
     font-size: var(--font-size-lg);
     line-height: 1.85;
     color: var(--color-dark);
+    padding: var(--spacing-lg);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .about-content:hover {
+    transform: scale(1.02);
+    border-color: var(--color-gray-lighter);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .highlight {
+    font-weight: 700;
+    color: var(--color-dark);
   }
 
   @media (max-width: 768px) {
@@ -51,6 +64,11 @@ const {
 
     .about-content {
       font-size: var(--font-size-base);
+      padding: var(--spacing-md);
+    }
+
+    .about-content:hover {
+      transform: scale(1.01);
     }
   }
 </style>
