@@ -51,9 +51,8 @@ const linkedinUsername = linkedin.split("/").pop();
 <style>
   .contact {
     padding: var(--spacing-4xl) var(--spacing-xl);
-    background-color: #0a0a0a;
-    color: #f8f8f7;
-    transition: none;
+    background-color: var(--color-black);
+    color: var(--color-white);
   }
 
   .contact-container {
@@ -67,17 +66,15 @@ const linkedinUsername = linkedin.split("/").pop();
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: #999999;
+    color: var(--color-gray-light);
     margin-bottom: var(--spacing-lg);
-    transition: none;
   }
 
   .contact-intro {
     font-size: var(--font-size-lg);
-    color: #e5e5e5;
+    color: var(--color-gray-lighter);
     margin-bottom: var(--spacing-xl);
     max-width: 32rem;
-    transition: none;
   }
 
   .contact-links {
@@ -91,24 +88,23 @@ const linkedinUsername = linkedin.split("/").pop();
     display: flex;
     align-items: baseline;
     gap: var(--spacing-lg);
-    color: #f8f8f7;
+    color: var(--color-white);
     transition: color var(--transition-fast);
   }
 
   .contact-link:hover,
   .contact-link:focus {
-    color: #e5e5e5;
+    color: var(--color-gray-lighter);
   }
 
   .contact-label {
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 500;
-    color: #666666;
+    color: var(--color-gray);
     min-width: 80px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    transition: none;
   }
 
   .contact-value {

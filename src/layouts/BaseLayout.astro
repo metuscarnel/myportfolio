@@ -21,37 +21,6 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Theme initialization script - must run before body renders to prevent flash -->
-    <script is:inline>
-      (function() {
-        const getTheme = () => {
-          // Check localStorage first
-          const storedTheme = localStorage.getItem('theme');
-          if (storedTheme) return storedTheme;
-          
-          // Fall back to system preference
-          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
-          }
-          
-          return 'light';
-        };
-        
-        // Apply theme immediately
-        const theme = getTheme();
-        document.documentElement.setAttribute('data-theme', theme);
-        
-        // Listen for system theme changes
-        if (window.matchMedia) {
-          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            // Only apply if user hasn't set a preference
-            if (!localStorage.getItem('theme')) {
-              document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-            }
-          });
-        }
-      })();
-    </script>
   </head>
   <body>
     <slot />
@@ -68,7 +37,6 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
   }
 
   :root {
-    /* Light mode colors (default) */
     --color-black: #0a0a0a;
     --color-dark: #1a1a1a;
     --color-gray-dark: #333333;
@@ -77,16 +45,6 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     --color-gray-lighter: #e5e5e5;
     --color-white: #f8f8f7;
     --color-pure-white: #ffffff;
-
-    /* Theme-aware colors */
-    --bg-primary: #f8f8f7;
-    --bg-secondary: #ffffff;
-    --text-primary: #1a1a1a;
-    --text-secondary: #666666;
-    --border-color: #e5e5e5;
-    --shadow-color: rgba(0, 0, 0, 0.08);
-    --pattern-opacity-base: 0.018;
-    --pattern-opacity-light: 0.012;
 
     --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, sans-serif;
@@ -120,42 +78,6 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     --transition-slow: 400ms ease;
   }
 
-  /* Dark mode colors */
-  [data-theme="dark"] {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #232323;
-    --text-primary: #e8e8e8;
-    --text-secondary: #a0a0a0;
-    --border-color: #404040;
-    --shadow-color: rgba(0, 0, 0, 0.4);
-    --pattern-opacity-base: 0.08;
-    --pattern-opacity-light: 0.05;
-
-    /* Inverted tones for dark mode */
-    --color-white: #1a1a1a;
-    --color-pure-white: #232323;
-    --color-dark: #e8e8e8;
-    --color-gray-dark: #d0d0d0;
-    --color-gray: #a0a0a0;
-    --color-gray-light: #707070;
-    --color-gray-lighter: #404040;
-    --color-black: #f0f0f0;
-  }
-
-  /* Detect system preference for initial theme */
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-      --bg-primary: #1a1a1a;
-      --bg-secondary: #232323;
-      --text-primary: #e8e8e8;
-      --text-secondary: #a0a0a0;
-      --border-color: #404040;
-      --shadow-color: rgba(0, 0, 0, 0.4);
-      --pattern-opacity-base: 0.08;
-      --pattern-opacity-light: 0.05;
-    }
-  }
-
   html {
     scroll-behavior: smooth;
   }
@@ -164,9 +86,8 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     line-height: 1.75;
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--color-dark);
+    background-color: var(--color-white);
     background-image: 
       /* Very subtle noise texture for matte effect */
       repeating-linear-gradient(
@@ -183,7 +104,6 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
         rgba(0, 0, 0, 0.006) 2px,
         rgba(0, 0, 0, 0.006) 4px
       );
-    transition: background-color 0.3s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
