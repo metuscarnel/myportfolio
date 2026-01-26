@@ -8,9 +8,13 @@ import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
 import Certifications from "../components/Certifications.astro";
 import Contact from "../components/Contact.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <BaseLayout title="Métus Gbogbohoundada — Portfolio">
+  <Navigation />
+  <ThemeToggle />
   <Hero />
   <main>
     <About />
@@ -30,15 +34,17 @@ import Contact from "../components/Contact.astro";
   .footer {
     padding: var(--spacing-lg) var(--spacing-xl);
     background-color: var(--color-black);
-    border-top: 1px solid var(--color-gray-dark);
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .footer-text {
     max-width: var(--content-width);
     margin: 0 auto;
     font-size: var(--font-size-xs);
-    color: var(--color-gray);
+    color: var(--text-secondary);
     text-align: center;
+    transition: color 0.3s ease;
   }
 
   @media (max-width: 768px) {

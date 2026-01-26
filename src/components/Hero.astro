@@ -35,7 +35,9 @@ const {
     align-items: center;
     justify-content: center;
     padding: var(--spacing-xl);
-    background-color: var(--color-white);
+    padding-top: calc(var(--spacing-xl) + 60px);
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
   }
 
   .hero-content {
@@ -48,11 +50,12 @@ const {
     font-size: var(--font-size-5xl);
     font-weight: 700;
     letter-spacing: -0.01em;
-    color: var(--color-black);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
     line-height: 1.2;
     position: relative;
     display: inline-block;
+    transition: color 0.3s ease;
   }
 
   .typewriter-text {
@@ -64,8 +67,8 @@ const {
     bottom: -2px;
     left: 0;
     height: 3px;
-    background: var(--color-dark, #1a1a1a);
-    transition: opacity 0.5s ease-out;
+    background: var(--text-primary);
+    transition: opacity 0.5s ease-out, background 0.3s ease;
   }
 
   .typewriter-underline.fade-out {
@@ -76,20 +79,22 @@ const {
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 600;
-    color: var(--color-gray);
+    color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
     text-transform: uppercase;
     letter-spacing: 0.15em;
+    transition: color 0.3s ease;
   }
 
   .hero-tagline {
     font-size: var(--font-size-lg);
-    color: var(--color-gray-dark);
+    color: var(--text-primary);
     line-height: 1.8;
     margin-bottom: var(--spacing-xl);
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    transition: color 0.3s ease;
   }
 
   .hero-nav {
@@ -103,14 +108,16 @@ const {
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 500;
-    color: var(--color-dark);
+    color: var(--text-primary);
     padding: var(--spacing-xs) 0;
     letter-spacing: 0.02em;
+    transition: color 0.3s ease;
   }
 
   .hero-separator {
-    color: var(--color-gray-light);
+    color: var(--text-secondary);
     user-select: none;
+    transition: color 0.3s ease;
   }
 
   @media (max-width: 768px) {

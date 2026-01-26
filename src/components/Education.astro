@@ -53,7 +53,8 @@ const {
 <style>
   .education {
     padding: var(--spacing-4xl) var(--spacing-xl);
-    background-color: var(--color-pure-white);
+    background-color: var(--bg-secondary);
+    transition: background-color 0.3s ease;
   }
 
   .education-container {
@@ -67,8 +68,9 @@ const {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--color-gray);
+    color: var(--text-secondary);
     margin-bottom: var(--spacing-xl);
+    transition: color 0.3s ease;
   }
 
   .education-list {
@@ -82,7 +84,8 @@ const {
     grid-template-columns: 180px 1fr;
     gap: var(--spacing-lg);
     padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid var(--color-gray-lighter);
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
   }
 
   .education-item:last-child {
@@ -94,28 +97,32 @@ const {
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 500;
-    color: var(--color-gray);
+    color: var(--text-secondary);
     white-space: nowrap;
+    transition: color 0.3s ease;
   }
 
   .education-degree {
     font-family: var(--font-family-heading);
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-dark);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
     line-height: 1.4;
+    transition: color 0.3s ease;
   }
 
   .education-institution {
     font-size: var(--font-size-base);
-    color: var(--color-gray);
+    color: var(--text-secondary);
     margin-bottom: var(--spacing-xs);
+    transition: color 0.3s ease;
   }
 
   .education-details {
     font-size: var(--font-size-sm);
-    color: var(--color-gray-dark);
+    color: var(--text-primary);
+    transition: color 0.3s ease;
   }
 
   @media (max-width: 768px) {
