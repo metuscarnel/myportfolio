@@ -1,0 +1,139 @@
+---
+interface Interest {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface Props {
+  interests?: Interest[];
+}
+
+const {
+  interests = [
+    {
+      title: "Technologie & Innovation",
+      description: "Passionné par l'intelligence artificielle, le cloud computing et les nouvelles technologies qui façonnent notre avenir.",
+      icon: "💻",
+    },
+    {
+      title: "Lecture & Apprentissage",
+      description: "Amateur de livres techniques, d'articles scientifiques et de documentation sur le développement logiciel et l'architecture système.",
+      icon: "📚",
+    },
+    {
+      title: "Sport & Bien-être",
+      description: "Pratique régulière d'activités physiques pour maintenir un équilibre entre vie professionnelle et personnelle.",
+      icon: "⚽",
+    },
+    {
+      title: "Musique",
+      description: "Mélomane appréciant différents genres musicaux, de la musique classique aux rythmes contemporains.",
+      icon: "🎵",
+    },
+  ],
+} = Astro.props;
+---
+
+<section id="interests" class="interests section-animate" aria-labelledby="interests-heading">
+  <div class="interests-container">
+    <h2 id="interests-heading" class="section-title">Centres d'intérêt</h2>
+    <div class="interests-grid">
+      {
+        interests.map((interest) => (
+          <article class="interest-card">
+            <div class="interest-icon" aria-hidden="true">
+              {interest.icon}
+            </div>
+            <h3 class="interest-title">{interest.title}</h3>
+            <p class="interest-description">{interest.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .interests {
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    background-color: var(--bg-tertiary);
+    transition: background-color 0.3s ease;
+  }
+
+  .interests-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xl);
+    transition: color 0.3s ease;
+  }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .interest-card {
+    padding: var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .interest-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--text-tertiary);
+  }
+
+  .interest-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    line-height: 1;
+  }
+
+  .interest-title {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    transition: color 0.3s ease;
+  }
+
+  .interest-description {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    transition: color 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .interests {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .interests-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .interest-card {
+      padding: var(--spacing-md);
+    }
+
+    .interest-icon {
+      font-size: 2rem;
+    }
+  }
+</style>
