@@ -63,15 +63,9 @@ const navItems: NavItem[] = [
     left: 0;
     right: 0;
     z-index: 999;
-    background-color: var(--bg-primary);
+    background-color: rgba(23, 23, 23, 0.95);
     border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
     backdrop-filter: blur(10px);
-    background-color: rgba(248, 248, 247, 0.95);
-  }
-
-  [data-theme="dark"] .nav {
-    background-color: rgba(26, 26, 26, 0.95);
   }
 
   .nav-container {
@@ -99,17 +93,13 @@ const navItems: NavItem[] = [
     font-family: var(--font-family);
     font-size: var(--font-size-xs);
     font-weight: 500;
-    color: #1a1a1a;
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: var(--spacing-xs) 0;
     position: relative;
     transition: color 0.2s ease;
     text-decoration: none;
-  }
-
-  [data-theme="dark"] .nav-link {
-    color: #e8e8e8 !important;
   }
 
   .nav-link::after {
@@ -119,12 +109,8 @@ const navItems: NavItem[] = [
     left: 0;
     width: 0;
     height: 1px;
-    background-color: #1a1a1a;
+    background-color: var(--text-primary);
     transition: width 0.3s ease;
-  }
-
-  [data-theme="dark"] .nav-link::after {
-    background-color: #e8e8e8 !important;
   }
 
   .nav-link:hover::after,
@@ -134,12 +120,7 @@ const navItems: NavItem[] = [
 
   .nav-link:hover,
   .nav-link:focus {
-    color: #666666;
-  }
-
-  [data-theme="dark"] .nav-link:hover,
-  [data-theme="dark"] .nav-link:focus {
-    color: #a0a0a0 !important;
+    color: var(--text-secondary);
   }
 
   /* Mobile menu button */
@@ -170,10 +151,6 @@ const navItems: NavItem[] = [
     transition: background-color 0.2s ease;
   }
 
-  [data-theme="dark"] .menu-icon {
-    background-color: #e8e8e8;
-  }
-
   .menu-icon::before,
   .menu-icon::after {
     content: "";
@@ -183,11 +160,6 @@ const navItems: NavItem[] = [
     background-color: var(--text-primary);
     left: 0;
     transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
-  }
-
-  [data-theme="dark"] .menu-icon::before,
-  [data-theme="dark"] .menu-icon::after {
-    background-color: #e8e8e8;
   }
 
   .menu-icon::before {
@@ -219,16 +191,12 @@ const navItems: NavItem[] = [
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(248, 248, 247, 0.98);
+    background-color: rgba(23, 23, 23, 0.98);
     z-index: 998;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     padding-top: 80px;
-  }
-
-  [data-theme="dark"] .mobile-menu {
-    background-color: rgba(26, 26, 26, 0.98);
   }
 
   .mobile-menu[aria-hidden="false"] {

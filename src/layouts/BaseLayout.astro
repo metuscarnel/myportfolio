@@ -37,14 +37,38 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
   }
 
   :root {
+    /* Dark theme colors - deep matte backgrounds */
+    --color-bg-primary: #1a1a1a;
+    --color-bg-secondary: #0f0f0f;
+    --color-bg-tertiary: #242424;
+    
+    /* Text colors optimized for dark backgrounds */
+    --color-text-primary: #e8e8e8;
+    --color-text-secondary: #a8a8a8;
+    --color-text-tertiary: #787878;
+    
+    /* Border and accent colors */
+    --color-border: #2a2a2a;
+    --color-border-light: #383838;
+    
+    /* Legacy color variables (kept for compatibility) */
     --color-black: #0a0a0a;
-    --color-dark: #1a1a1a;
-    --color-gray-dark: #333333;
-    --color-gray: #666666;
-    --color-gray-light: #999999;
-    --color-gray-lighter: #e5e5e5;
-    --color-white: #f8f8f7;
-    --color-pure-white: #ffffff;
+    --color-dark: #e8e8e8;
+    --color-gray-dark: #d0d0d0;
+    --color-gray: #a8a8a8;
+    --color-gray-light: #787878;
+    --color-gray-lighter: #2a2a2a;
+    --color-white: #1a1a1a;
+    --color-pure-white: #242424;
+
+    /* Semantic theme variables */
+    --bg-primary: var(--color-bg-primary);
+    --bg-secondary: var(--color-bg-secondary);
+    --bg-tertiary: var(--color-bg-tertiary);
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-tertiary: var(--color-text-tertiary);
+    --border-color: var(--color-border);
 
     --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, sans-serif;
@@ -86,23 +110,23 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     line-height: 1.75;
-    color: var(--color-dark);
-    background-color: var(--color-white);
+    color: var(--text-primary);
+    background-color: #171717;
     background-image: 
-      /* Very subtle noise texture for matte effect */
+      /* Subtle grain texture - very discreet */
       repeating-linear-gradient(
         0deg,
         transparent,
         transparent 2px,
-        rgba(0, 0, 0, 0.008) 2px,
-        rgba(0, 0, 0, 0.008) 4px
+        rgba(255, 255, 255, 0.012) 2px,
+        rgba(255, 255, 255, 0.012) 4px
       ),
       repeating-linear-gradient(
         90deg,
         transparent,
         transparent 2px,
-        rgba(0, 0, 0, 0.006) 2px,
-        rgba(0, 0, 0, 0.006) 4px
+        rgba(255, 255, 255, 0.008) 2px,
+        rgba(255, 255, 255, 0.008) 4px
       );
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -110,7 +134,7 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     overflow-x: hidden;
   }
 
-  /* Background geometric pattern - always visible, matte editorial style */
+  /* Subtle editorial background pattern - matte tone-on-tone for dark theme */
   body::before {
     content: "";
     position: fixed;
@@ -120,17 +144,16 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     height: 100%;
     pointer-events: none;
     z-index: 0;
-    transition: opacity 0.3s ease;
     background-image: 
-      /* Large cut-out squares - editorial style */
-      linear-gradient(to right, transparent 0%, transparent 20%, rgba(255, 255, 255, var(--pattern-opacity-base)) 20%, rgba(255, 255, 255, var(--pattern-opacity-base)) 40%, transparent 40%),
-      linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(255, 255, 255, var(--pattern-opacity-light)) 15%, rgba(255, 255, 255, var(--pattern-opacity-light)) 35%, transparent 35%),
-      /* Smaller accent squares */
-      radial-gradient(circle at 85% 25%, rgba(255, 255, 255, calc(var(--pattern-opacity-base) + 0.004)) 0%, rgba(255, 255, 255, calc(var(--pattern-opacity-base) + 0.004)) 8%, transparent 8%),
-      radial-gradient(circle at 10% 70%, rgba(255, 255, 255, var(--pattern-opacity-base)) 0%, rgba(255, 255, 255, var(--pattern-opacity-base)) 12%, transparent 12%),
+      /* Large editorial accents - very subtle */
+      linear-gradient(to right, transparent 0%, transparent 20%, rgba(255, 255, 255, 0.015) 20%, rgba(255, 255, 255, 0.015) 40%, transparent 40%),
+      linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(255, 255, 255, 0.010) 15%, rgba(255, 255, 255, 0.010) 35%, transparent 35%),
+      /* Smaller accent shapes */
+      radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.018) 0%, rgba(255, 255, 255, 0.018) 8%, transparent 8%),
+      radial-gradient(circle at 10% 70%, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.015) 12%, transparent 12%),
       /* Subtle grid */
-      linear-gradient(90deg, transparent 0%, transparent calc(100% - 1px), rgba(255, 255, 255, var(--pattern-opacity-light)) calc(100% - 1px)),
-      linear-gradient(0deg, transparent 0%, transparent calc(100% - 1px), rgba(255, 255, 255, var(--pattern-opacity-light)) calc(100% - 1px));
+      linear-gradient(90deg, transparent 0%, transparent calc(100% - 1px), rgba(255, 255, 255, 0.010) calc(100% - 1px)),
+      linear-gradient(0deg, transparent 0%, transparent calc(100% - 1px), rgba(255, 255, 255, 0.010) calc(100% - 1px));
     background-size: 
       100% 100%,
       100% 100%,
@@ -147,18 +170,7 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
       0 0;
   }
 
-  /* In light mode, use darker overlay */
-  [data-theme="light"] body::before {
-    background-image: 
-      linear-gradient(to right, transparent 0%, transparent 20%, rgba(0, 0, 0, 0.018) 20%, rgba(0, 0, 0, 0.018) 40%, transparent 40%),
-      linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(0, 0, 0, 0.012) 15%, rgba(0, 0, 0, 0.012) 35%, transparent 35%),
-      radial-gradient(circle at 85% 25%, rgba(0, 0, 0, 0.022) 0%, rgba(0, 0, 0, 0.022) 8%, transparent 8%),
-      radial-gradient(circle at 10% 70%, rgba(0, 0, 0, 0.018) 0%, rgba(0, 0, 0, 0.018) 12%, transparent 12%),
-      linear-gradient(90deg, transparent 0%, transparent calc(100% - 1px), rgba(0, 0, 0, 0.012) calc(100% - 1px)),
-      linear-gradient(0deg, transparent 0%, transparent calc(100% - 1px), rgba(0, 0, 0, 0.012) calc(100% - 1px));
-  }
-
-  /* Additional cut-out square accents - matte tone-on-tone */
+  /* Additional subtle accents - calm and discreet */
   body::after {
     content: "";
     position: fixed;
@@ -168,14 +180,13 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     height: 100%;
     pointer-events: none;
     z-index: 0;
-    transition: opacity 0.3s ease;
     background-image:
-      /* Top-right square partially visible */
-      linear-gradient(to left, rgba(255, 255, 255, calc(var(--pattern-opacity-light) + 0.003)) 0%, rgba(255, 255, 255, calc(var(--pattern-opacity-light) + 0.003)) 15%, transparent 15%),
-      linear-gradient(to bottom, rgba(255, 255, 255, calc(var(--pattern-opacity-light) + 0.003)) 0%, rgba(255, 255, 255, calc(var(--pattern-opacity-light) + 0.003)) 20%, transparent 20%),
+      /* Top-right accent partially visible */
+      linear-gradient(to left, rgba(255, 255, 255, 0.012) 0%, rgba(255, 255, 255, 0.012) 15%, transparent 15%),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 0%, rgba(255, 255, 255, 0.012) 20%, transparent 20%),
       /* Bottom-left accent */
-      linear-gradient(to right, rgba(255, 255, 255, var(--pattern-opacity-base)) 0%, rgba(255, 255, 255, var(--pattern-opacity-base)) 12%, transparent 12%),
-      linear-gradient(to top, rgba(255, 255, 255, var(--pattern-opacity-light)) 0%, rgba(255, 255, 255, var(--pattern-opacity-light)) 18%, transparent 18%);
+      linear-gradient(to right, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.015) 12%, transparent 12%),
+      linear-gradient(to top, rgba(255, 255, 255, 0.010) 0%, rgba(255, 255, 255, 0.010) 18%, transparent 18%);
     background-size: 
       100% 100%,
       100% 100%,
@@ -186,15 +197,6 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
       0 0,
       0 100%,
       0 100%;
-  }
-
-  /* In light mode, use darker overlay */
-  [data-theme="light"] body::after {
-    background-image:
-      linear-gradient(to left, rgba(0, 0, 0, 0.015) 0%, rgba(0, 0, 0, 0.015) 15%, transparent 15%),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 0%, rgba(0, 0, 0, 0.015) 20%, transparent 20%),
-      linear-gradient(to right, rgba(0, 0, 0, 0.018) 0%, rgba(0, 0, 0, 0.018) 12%, transparent 12%),
-      linear-gradient(to top, rgba(0, 0, 0, 0.012) 0%, rgba(0, 0, 0, 0.012) 18%, transparent 18%);
   }
 
   body > * {
@@ -319,11 +321,11 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
 
   /* Focus styles for accessibility */
   :focus-visible {
-    outline: 2px solid var(--color-gray-dark);
+    outline: 2px solid var(--text-secondary);
     outline-offset: 2px;
   }
 
-  /* Selection styles */
+  /* Selection styles - optimized for dark theme */
   ::selection {
     background-color: var(--text-primary);
     color: var(--bg-primary);

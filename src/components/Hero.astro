@@ -8,7 +8,7 @@ interface Props {
 const {
   name = "Métus Gbogbohoundada",
   title = "Étudiant en Informatique",
-  tagline = "Étudiant en L3 Informatique CILS à l'Université Évry Paris-Saclay, je suis animé par la conviction que l'analyse de données est un levier puissant pour répondre aux grands défis sociétaux et environnementaux de demain.",
+  tagline = "Étudiant en L3 Informatique CILS à l'Université Évry Paris-Saclay, je me passionne pour l'analyse de données, un levier puissant pour répondre aux grands défis sociétaux et environnementaux de demain.",
 } = Astro.props;
 ---
 
@@ -37,7 +37,6 @@ const {
     padding: var(--spacing-xl);
     padding-top: calc(var(--spacing-xl) + 60px);
     background-color: var(--bg-primary);
-    transition: background-color 0.3s ease;
   }
 
   .hero-content {
@@ -50,7 +49,7 @@ const {
     font-size: var(--font-size-5xl);
     font-weight: 700;
     letter-spacing: -0.01em;
-    color: var(--color-black);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
     line-height: 1.2;
     position: relative;
@@ -66,7 +65,7 @@ const {
     bottom: -2px;
     left: 0;
     height: 3px;
-    background: var(--color-dark, #1a1a1a);
+    background: var(--text-primary);
     transition: opacity 0.5s ease-out;
   }
 
@@ -78,7 +77,7 @@ const {
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 600;
-    color: var(--color-gray);
+    color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -86,7 +85,7 @@ const {
 
   .hero-tagline {
     font-size: var(--font-size-lg);
-    color: var(--color-gray-dark);
+    color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: var(--spacing-xl);
     max-width: 36rem;
@@ -105,13 +104,13 @@ const {
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: 500;
-    color: var(--color-dark);
+    color: var(--text-primary);
     padding: var(--spacing-xs) 0;
     letter-spacing: 0.02em;
   }
 
   .hero-separator {
-    color: var(--color-gray-light);
+    color: var(--text-tertiary);
     user-select: none;
   }
 
