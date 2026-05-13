@@ -3,12 +3,13 @@ interface Props {
   email?: string;
   github?: string;
   linkedin?: string;
+  site?: string;
 }
 
 const {
   email = "contact@metuscarnel.fr",
-  github = "https://github.com/metus01",
-  linkedin = "https://www.linkedin.com/in/m%C3%A9tus-gbogbohoundada-b718a8257/",
+  github = "https://github.com/metuscarnel",
+  linkedin = "https://www.linkedin.com/in/metuscarnel",
 } = Astro.props;
 
 const githubUsername = github.split("/").pop();
@@ -50,7 +51,7 @@ const linkedinUsername = linkedin.split("/").pop();
 
 <style>
   .contact {
-    padding: var(--spacing-4xl) var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-xl);
     background-color: var(--bg-secondary);
     color: var(--text-primary);
     transition: background-color 0.3s ease;

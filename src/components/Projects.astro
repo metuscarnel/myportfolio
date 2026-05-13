@@ -3,6 +3,7 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
+  keywords?: string;
   link?: string;
 }
 
@@ -10,34 +11,40 @@ interface Props {
   projects?: Project[];
 }
 
-// Mapping des technologies vers leurs identifiants Simple Icons
-const techIcons: Record<string, string> = {
-  "Python": "python",
-  "Java": "java",
-  "JavaScript": "javascript",
-  "TypeScript": "typescript",
-  "React": "react",
-  "Node.js": "nodedotjs",
-  "Git": "git",
-  "GitHub": "github",
-  "PostgreSQL": "postgresql",
-  "SQLite": "sqlite",
-  "JSON": "json",
-  "LaTeX": "latex",
-  "UML": "uml",
-  "Figma": "figma",
-  "HTML": "html5",
-  "CSS": "css3",
+// Mapping des technologies vers leurs icônes
+const techEmojis: Record<string, string> = {
 };
 
 const {
   projects = [
     {
-      title: "Connect 4 Game 8 x 9",
+      title: "Timed Automate GUI",
+      description: "Design and implementation of a graphical user interface for a search tool.",
+      technologies: ["Python", "PySide6", "Git", "GitHub"],
+      link:"https://github.com/metuscarnel/timed-automata-gui",
+      keywords:"timed automata, dbm, model checking, gui"
+    },
+    {
+      title: "TSP Résolution",
+      description: "Résolution du Problème du Voyageur de Commerce par Algorithme Génétique",
+      technologies: ["Python", "Git", "GitHub", "Plotly"],
+      link: "https://github.com/metuscarnel/tsp-project",
+      keywords:"tsp (travelling salesman problem), algo génétique, analyse combinatoire"
+    },
+    {
+      title: "MaxPar : Parallélisation maximale automatique",
+      description: "Développement d'une bibliothèque en Python pour automatiser la parallélisation maximale de systèmes de tâches",
+      technologies: ["Python", "Git", "GitHub", "Graphviz"],
+      link: "https://github.com/metuscarnel/maxpar/tree/metus_version",
+      keywords:"parallélisation, tâches, graphes de dépendances, conditions de Bernstein",
+    },
+    {
+      title: "Connect4",
       description:
         "Développement d'un jeu de Puissance 4 en Python avec une grille personnalisée de 8x9. Implémentation de l'algorithme Minimax pour une IA compétitive.",
-      technologies: ["Python", "JSON", "Git" , "GitHub", "PostgreSQL"],
-      link: "https://github.com",
+      technologies: ["Python", "JSON", "Git" , "GitHub", "MySQL"],
+      link: "https://github.com/connectFourSite",
+      keywords:"minimax, kanban, gestion de projet"
     },
     {
       title: "Plateforme de gestion hotelière",
@@ -45,6 +52,7 @@ const {
         "Développement d'une application web complète pour la gestion hôtelière, incluant la réservation de chambres, la gestion des clients et la facturation.",
       technologies: ["Java", "Swing", "FlatLaf", "SQLite"],
       link: "https://github.com",
+      keywords:"mvc, uml"
     },
     {
       title: "Conception du système de gestion d'un réseaux de transport",
@@ -52,6 +60,7 @@ const {
         "Analyse Fonctionnelle et Conception du nouveau Système de la Société TRICE. Projet académique de Modélisation Objet UML.",
       technologies: ["LaTeX", "UML", "Git", "GitHub", "Figma"],
       link: "https://github.com",
+      keywords:"analyse fonctionnelle, conception, uml"
     },
   ],
 } = Astro.props;
@@ -89,19 +98,11 @@ const {
               <ul class="project-tech" role="list">
                 {project.technologies.map((tech) => (
                   <li class="tech-item">
-                    {techIcons[tech] ? (
-                      <img
-                        src={`https://cdn.simpleicons.org/${techIcons[tech]}/888888`}
-                        alt={tech}
-                        title={tech}
-                        class="tech-logo"
-                      />
-                    ) : (
-                      <span class="tech-name">{tech}</span>
-                    )}
+                    <span class="tech-name">{tech}</span>
                   </li>
                 ))}
               </ul>
+              {project.keywords && <div class="project-keywords"><span class="keywords-label">Mots clés :</span> {project.keywords}</div>}
             </div>
           </article>
         ))
@@ -112,7 +113,7 @@ const {
 
 <style>
   .projects {
-    padding: var(--spacing-4xl) var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-xl);
     background-color: var(--bg-secondary);
     transition: background-color 0.3s ease;
   }
@@ -200,63 +201,68 @@ const {
   }
 
   .tech-item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0.75rem;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
+    display: inline;
     transition: all 0.3s ease;
-    width: auto;
   }
 
-  .tech-item:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+  .tech-item::after {
+    content: ", ";
+    color: var(--text-secondary);
   }
 
-  /* Light theme adjustments */
-  :global([data-theme="light"]) .tech-item {
-    background-color: rgba(0, 0, 0, 0.03);
-    border-color: rgba(0, 0, 0, 0.08);
-  }
-
-  :global([data-theme="light"]) .tech-item:hover {
-    background-color: rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.15);
-  }
-
-  .tech-logo {
-    width: 24px;
-    height: 24px;
-    display: block;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-  }
-
-  :global([data-theme="light"]) .tech-logo {
-    opacity: 0.7;
-    filter: brightness(0.6);
-  }
-
-  .tech-item:hover .tech-logo {
-    opacity: 1;
-  }
-
-  :global([data-theme="light"]) .tech-item:hover .tech-logo {
-    opacity: 0.9;
-    filter: brightness(0.5);
+  .tech-item:last-child::after {
+    content: "";
   }
 
   .tech-name {
     font-family: var(--font-family);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
     font-weight: 500;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
+
+  .tech-item:hover .tech-name {
     color: var(--text-secondary);
-    white-space: nowrap;
-    display: block;
+  }
+
+  /* Light theme adjustments */
+  :global([data-theme="light"]) .tech-item:hover .tech-name {
+    color: var(--text-tertiary);
+  }
+
+  .tech-emoji {
+    display: none;
+  }
+
+  .tech-name {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+  }
+
+  .tech-item:hover .tech-name {
+    color: var(--text-secondary);
+  }
+
+  /* Light theme adjustments */
+  :global([data-theme="light"]) .tech-item:hover .tech-name {
+    color: var(--text-tertiary);
+  }
+
+  .project-keywords {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-sm);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .keywords-label {
+    font-weight: 600;
   }
 
   .sr-only {

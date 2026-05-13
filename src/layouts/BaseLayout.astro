@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Portfolio de développeur - Étudiant en Informatique" } = Astro.props;
+const { title, description = " Étudiant en Informatique" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,6 +15,11 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,8 +34,7 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
       // Initialize theme before page renders to prevent flash
       (function() {
         const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        const theme = savedTheme || 'light';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
@@ -95,14 +99,14 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
     --font-size-5xl: 3.5rem;
 
     --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2.5rem;
-    --spacing-xl: 3.5rem;
-    --spacing-2xl: 5rem;
-    --spacing-3xl: 7rem;
-    --spacing-4xl: 10rem;
-    --spacing-5xl: 12rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.25rem;
+    --spacing-lg: 1.75rem;
+    --spacing-xl: 2.5rem;
+    --spacing-2xl: 3.5rem;
+    --spacing-3xl: 5rem;
+    --spacing-4xl: 7rem;
+    --spacing-5xl: 9rem;
 
     --max-width: 72rem;
     --content-width: 48rem;
@@ -429,13 +433,13 @@ const { title, description = "Portfolio de développeur - Étudiant en Informati
   }
 </style>
 
-<script>
+<script is:inline>
   // Intersection Observer pour animations de révélation au scroll
   const createScrollObserver = () => {
     const observerOptions = {
       root: null,
-      rootMargin: "-50px 0px -50px 0px",
-      threshold: 0.15,
+      rootMargin: "0px",
+      threshold: 0,
     };
 
     const observer = new IntersectionObserver((entries) => {

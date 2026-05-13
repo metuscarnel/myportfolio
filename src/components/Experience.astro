@@ -5,6 +5,7 @@ interface ExperienceItem {
   location: string;
   period: string;
   description: string;
+  keywords: string;
 }
 
 interface Props {
@@ -13,12 +14,21 @@ interface Props {
 
 const {
   experiences = [
+    {role: "Stagiaire - Équipe COSMO",
+    organization: "IBISC - Université Évry Paris-Saclay",
+    location: "Évry-Courcouronnes, France",
+    period: "Depuis Avril 2026",
+    description: "Stage de recherche au sein de l'équipe COSMO du laboratoire IBISC, axé sur la conception et le developpement d'une interface graphique pour un outil de recherche",
+    keywords : "gui, python, pyside6, ui/ux"
+
+    },
     {
       role: "Employé Commercial",
       organization: "Carrefour",
       location: "Évry-Courcouronnes, France",
       period: "Depuis Juin 2025",
       description: "Employé Commercial en CDI au sein du magasin Carrefour Evry2, j'assure le reassort des rayons, la gestion des stocks, et le service client pour garantir une expérience d'achat optimale.",
+      keywords: "service client, gestion des stocks, reassort"
     },
     {
       role: "Volontaire en Service Civique",
@@ -27,6 +37,7 @@ const {
       period: "Juin - Septembre 2025",
       description:
         "Missions : Accueillir, orienter et accompagner les patients dans les différents services · Participer à l'accueil de l'hôpital et des centres de santé · Fournir des informations générales sur les services et le fonctionnement de l'hôpital Aide administrative · Aider les patients à utiliser les bornes de consultation digitale · Expliquer ou lire certains documents administratifs aux patients",
+      keywords: "service civique, santé, accueil, orientation"
     },
     {
       role: "Tuteur Académique",
@@ -34,28 +45,31 @@ const {
       location: "En distanciel",
       period: "Février - Juin 2025",
       description:"Accompagnement personnalisé d'un élève en difficulté. Soutien académique en Français Anglais et Mathématiques · Aide à l'organisation et à la gestion du temps · Encouragement et motivation pour renforcer la confiance en soi et l'estime de soi · Suivi régulier des progrès académiques et ajustement des stratégies d'apprentissage en conséquence.",
+      keywords: "tutorat, éducation, support académique"
     },
     {
       role: "Administrateur Système (Stagiaire)",
       organization: "Ministère de l'Agriculture de l'Élevage et de la Pêche (MAEP) Bénin",
       location: "Cotonou, Bénin",
       period: "Mai - Août 2024",
-      description:"Ajout d'un module de chiffrement au système d'archivage Maarch RM pour renforcement de la sécurité des données.",    },
-       {
+      description: "Ajout d'un module de chiffrement au système d'archivage Maarch RM pour renforcement de la sécurité des données.",
+      keywords: "sécurité, chiffrement, maarch rm"
+    },
+    {
       role: "Développeur (Stagiaire)",
       organization: "Blolab Bénin",
       location: "Cotonou, Bénin",
       period: "Juillet - Août 2023",
-      description:
-        "Conception et développement d'une application  web de partage de recette culinaire utilisant le framework  Laravel. Collaboration avec une condisciple.",
+      description: "Conception et développement d'une application web de partage de recette culinaire utilisant le framework Laravel. Collaboration avec une condisciple.",
+      keywords: "laravel, web, développement"
     },
-       {
+    {
       role: "Stagiaire",
       organization: "ROMAS Technologie",
       location: "Cotonou, Bénin",
       period: "Septembre - Octobre 2022",
-      description:
-        "Stage de découverte en entreprise axé sur le développement web et la gestion des bases de données. Participation à des projets réels et acquisition de compétences pratiques.",
+      description: "Stage de découverte en entreprise axé sur le développement web et la gestion des bases de données. Participation à des projets réels et acquisition de compétences pratiques.",
+      keywords: "développement web, bases de données"
     },
     
   ],
@@ -80,6 +94,7 @@ const {
                 <span class="experience-location">{exp.location}</span>
               </div>
               {exp.description && <p class="experience-desc">{exp.description}</p>}
+              {exp.keywords && <div class="experience-keywords"><span class="keywords-label">Mots clés :</span> {exp.keywords}</div>}
             </div>
           </article>
         ))
@@ -90,7 +105,7 @@ const {
 
 <style>
   .experience {
-    padding: var(--spacing-4xl) var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-xl);
     background-color: var(--bg-primary);
     transition: background-color 0.3s ease;
   }
@@ -188,6 +203,18 @@ const {
     color: var(--text-primary);
     line-height: 1.7;
     transition: color 0.3s ease;
+  }
+
+  .experience-keywords {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-sm);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .keywords-label {
+    font-weight: 600;
   }
 
   @media (max-width: 768px) {
